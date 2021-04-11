@@ -1,4 +1,5 @@
-const { User } = require("../models");
+const { User, Thought } = require("../models");
+
 const ERR_MSG_NO_USR_FOUND = "No user with this id was found";
 const ERR_MSG_NO_CONNECTION_FOUND = "No friend (user) with this id was found";
 
@@ -8,7 +9,7 @@ const userController = {
       .then((dbUserData) => res.json(dbUserData))
       .catch((err) => {
         console.log(err);
-        res.status(400).json(err);
+        res.status(500).json(err);
       });
   },
   getUserById: function ({ params }, res) {
@@ -29,13 +30,13 @@ const userController = {
       })
       .catch((err) => {
         console.log(err);
-        res.status(400).json(err);
+        res.status(500).json(err);
       });
   },
   createUser: function ({ body }, res) {
     User.create(body)
       .then((dbUserData) => res.json(dbUserData))
-      .catch((err) => res.status(404).json(err));
+      .catch((err) => res.status(500).json(err));
   },
   updateUser: function ({ params, body }, res) {
     User.findOneAndUpdate(
@@ -55,18 +56,27 @@ const userController = {
         }
         res.json(dbUserData);
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => res.status(500).json(err));
   },
   deleteUser: function ({ params }, res) {
     User.findOneAndDelete({ _id: params.id })
       .then((dbUserData) => {
         if (!dbUserData) {
-          res.status(404).json({ message: ERR_MSG_NO_USR_FOUND });
-          return;
+          return res.status(404).json({ message: ERR_MSG_NO_USR_FOUND });
+        } else {
+          Thought.deleteMany({ username: dbUserData.username }).then(
+            (dbThoughtData) => {
+              if (!dbThoughtData) {
+                return res(404).json(
+                  "User deleted but no associated thought was found"
+                );
+              }
+            }
+          );
         }
         res.json(dbUserData);
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => res.status(500).json(err));
   },
   connectWithUser({ params }, res) {
     User.findOneAndUpdate(
@@ -92,7 +102,7 @@ const userController = {
           });
         }
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => res.status(500).json(err));
   },
   disconnectWithUser({ params }, res) {
     User.findOneAndUpdate(
@@ -118,7 +128,7 @@ const userController = {
           });
         }
       })
-      .catch((err) => res.status(400).json(err));
+      .catch((err) => res.status(500).json(err));
   },
 };
 
