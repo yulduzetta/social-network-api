@@ -11,7 +11,7 @@ const ReactSchema = new Schema(
     reactionBody: {
       type: String,
       required: "reactionBody is a required field",
-      //TODO: 280 character maximum
+      validate: [({ length }) => length <= 280, "reactionBody should 280 max"],
     },
     username: {
       type: String,
@@ -36,7 +36,7 @@ const ThoughtSchema = new Schema(
     thoughtText: {
       type: String,
       required: "thoughtText is a required field",
-      //TODO: Must be between 1 and 280 characters
+      validate: [({ length }) => length <= 280, "thoughtText should 280 max"],
     },
     createdAt: {
       type: Date,
