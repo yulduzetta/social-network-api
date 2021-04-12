@@ -4,7 +4,7 @@
 
 
 ## Description 🤓
-Generates Team directory based on user's inputs (watch full demo [here](https://www.youtube.com/watch?v=rWaPS3RMe-I).
+Provides an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list (watch full demo [here](https://www.youtube.com/watch?v=rWaPS3RMe-I).
 )
   
 ## Table of Contents 🗒️
