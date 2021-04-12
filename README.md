@@ -1,10 +1,10 @@
 # Social Network API ![MIT License](https://img.shields.io/badge/mit-brightgreen) ![Javascript](https://img.shields.io/github/languages/top/nielsenjared/badmath)
-## Full Demo video can be found [here](https://www.youtube.com/watch?v=rWaPS3RMe-I).
+## Full Demo video can be found [here](https://youtu.be/AgiihHvzz-o).
 <img width="610" alt="demo" src="https://user-images.githubusercontent.com/13324397/114332586-2229a700-9b0c-11eb-9389-dac67d5eeb9c.png">
 
 
 ## Description 🤓
-Provides an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list (watch full demo [here](https://www.youtube.com/watch?v=rWaPS3RMe-I).
+Provides an API for a social network web application where users can share their thoughts, react to friends’ thoughts, and create a friend list (watch full demo [here](https://youtu.be/AgiihHvzz-o).
 )
   
 ## Table of Contents 🗒️
